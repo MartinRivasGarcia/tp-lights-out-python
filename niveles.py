@@ -68,3 +68,13 @@ def UsuarioJugando (tamaño):
             print("La letra referida a las columnas ingresada es invalida")
             error = 1
     print(a)
+
+#Tener en cuenta para el modo de juego alternativo
+def GenerarRandom():
+    import random
+    caracter = random.random() #Devuelve entre 0.0 y 1.0
+    if (caracter > 0.5):
+        caracter = 0
+    else:
+        caracter = "."
+    return(caracter)
