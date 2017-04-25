@@ -20,15 +20,21 @@ def Instrucciones(info): #Imprime el texto en pantalla q sea requerido
         return juego
 
 def ModosDeJuego(paso):
+    tamaño=0
     if(paso == 0):
         juego = int(input("Elegir modo de juego predeterminado con 1, aleatorio con 2 o cero si requiere instruciones. Presione 3 si desea salir: "))
-        while ((juego != 1) and (juego != 2) and (juego != 0) and (juego != 3)):
+        while ((juego != 0) and (juego != 1) and (juego != 2) and (juego != 3)):
             juego = int(input("Reingrese el valor, recuerde elergir 1 para predeterminado o 2 para aleatorio y 3 para salir, cero si necesita instrucciones: "))
 
     if(paso == 1):
         juego = int(input("Elegir modo de juego predeterminado con 1 o aleatorio con 2 y 3 para salir: "))
-        while ((juego != 1) and (juego != 2)):
+        while ((juego != 1) and (juego != 2) and (juego!=3)):
             juego = int(input("Reingrese el valor, recuerde elegir 1 para predeterminado o 2 para aleatorio o 3 si desea salir: "))
-    return (juego)
+
+    if(juego == 1):
+        tamaño = 5
+    if(juego == 2):
+        tamño = 6
+    return (juego,tamaño)
 def Adevertencia():
     print("Recuerde ingresar la valor de la fila y de la columna, de la siguiente forma: Letra columna Numero Fila")
