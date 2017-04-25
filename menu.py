@@ -1,9 +1,9 @@
-def Bienvenida(): #Imprime texto en pantalla solo si se llama
+def bienvenida(): #Imprime texto en pantalla solo si se llama
     print("Binvenido al juego light out")
     info = (input("Si desea saber las instrucciones presione 1: "))
     Instrucciones(int(info))
 
-def Instrucciones(info): #Imprime el texto en pantalla q sea requerido
+def instrucciones(info): #Imprime el texto en pantalla q sea requerido
     if(info == 1):
         print("El juego consiste en lograr apagar todas las luces de un tablero, las cuales")
         print("estaran simbolizadas por 0 si estan prendidas o por . si estan apagadas.")
@@ -19,7 +19,7 @@ def Instrucciones(info): #Imprime el texto en pantalla q sea requerido
         juego = ModosDeJuego(1)
         return juego
 
-def ModosDeJuego(paso):
+def modosDeJuego(paso):
     if(paso == 0):
         juego = int(input("Elegir modo de juego predeterminado con 1, aleatorio con 2 o cero si requiere instruciones. Presione 3 si desea salir: "))
         while ((juego != 1) and (juego != 2) and (juego != 0) and (juego != 3)):
@@ -30,5 +30,5 @@ def ModosDeJuego(paso):
         while ((juego != 1) and (juego != 2)):
             juego = int(input("Reingrese el valor, recuerde elegir 1 para predeterminado o 2 para aleatorio o 3 si desea salir: "))
     return (juego)
-def Adevertencia():
+def adevertencia():
     print("Recuerde ingresar la valor de la fila y de la columna, de la siguiente forma: Letra columna Numero Fila")
