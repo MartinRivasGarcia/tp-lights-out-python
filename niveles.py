@@ -39,3 +39,4 @@ def Genracion(nivel):
             '00...',
             '00...',
         ]
+    return (lista)
