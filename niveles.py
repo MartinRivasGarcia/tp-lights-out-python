@@ -1,5 +1,6 @@
 #Genera las grillas de los niveles predeterminados
 def generacion(nivel):
+    #La funcion unicamente te crea la grilla si la variable de entrada esta entre 1 y 5
     if (nivel == 1):
         lista = [
             '0 0 . 0 0',
@@ -40,6 +41,7 @@ def generacion(nivel):
             '0 0 . . .',
             '0 0 . . .',
         ]
+    #va a devolver una lista creada para ser la grilla del nivel sin afectar la variable de entrada
     return (lista)
 
 #Imprime en pantalla la grilla del nivel inicial, la cual ira siendo modificada
@@ -120,6 +122,6 @@ def usuario_jugando(tamaño):
         return (coordenadas_ingresadas(tamaño))
     else:
         return (siguio)
-def usuario_jugo(coordenadas):
-    if((coordenadas[1] == "A") or (coordenadas[1] == "a")):
-        coordenadas[1] = 0
+"""def usuario_jugo(coordenadas):
+    coordenadas = lower(coordenadas)
+    coordenadas [1] = ord(coordenadas [1]) - 97"""
