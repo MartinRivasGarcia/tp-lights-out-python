@@ -81,6 +81,7 @@ def usuario_jugando (tamaño):
         if ((a[1] < "a" or a[1] > "e") and (a[1] > "A" or a[1] < "E")):
             print("La letra referida a las columnas ingresada es invalida")
             error = 1
+    print()
     return (a)
 
 #Tener en cuenta para el modo de juego alternativo
