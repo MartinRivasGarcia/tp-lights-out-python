@@ -1,15 +1,26 @@
 import menu
 import niveles
 
-menu.Bienvenida()
-juego,tamaño = menu.ModosDeJuego(0)
+menu.bienvenida()
+juego,tamaño = menu.modos_de_juego(0)
 if((juego == 0) and (tamaño==0)):
-    juego,tamaño = menu.Instrucciones(2)
+    juego,tamaño = menu.instrucciones(2)
 
 nivel = 1
-while (juego != 3):
+if(juego==3):
+        print("Gracias por jugar a lights out")
+        print("Vuelva pronto")
+        exit()
+
+while (True):
     if (juego == 1):
-        grilla = niveles.Generacion(nivel)
-        niveles.Imprimir(nivel,grilla)
+        grilla = niveles.generacion(nivel)
+        niveles.imprimir(nivel,grilla)
         nivel = nivel + 1
-    juego,tamaño = menu.ModosDeJuego(1)
+        coordenadas = niveles.usuario_jugando(tamaño)
+        juego,tamaño = menu.modos_de_juego(1)
+
+    if(juego==3 or juego==2):
+        print("Gracias por jugar a lights out")
+        print("Vuelva pronto")
+        exit()
