@@ -1,3 +1,4 @@
+#Genera las grillas de los niveles predeterminados
 def generacion(nivel):
     if (nivel == 1):
         lista = [
@@ -41,17 +42,18 @@ def generacion(nivel):
         ]
     return (lista)
 
+#Imprime en pantalla la grilla del nivel inicial, la cual ira siendo modificada
 def imprimir (nivel,grilla):
     print("Usted esta jugando el nivel " + str(nivel) + ":")
-    print("   A B C D E ")
+    print("    A B C D E ")
     numero = 1
     for renglon in grilla:
-        print(str(numero) + " |" + renglon)
+        print(str(numero) + " | " + renglon)
         numero = numero + 1
     print()
 
-def usuario_jugando (tamaño):
-
+#Devuelve las coordenadas que el usuario ingreso
+def coordenadas_ingresadas (tamaño):
     a = input("Ingrese las coordenadas a utilizar: ")
     if(a[0] < "A"):
         if ((int(a[0]) > tamaño) or (int(a[0]) <= 0)):
@@ -93,3 +95,31 @@ def generar_random():
     else:
         caracter = "."
     return(caracter)
+
+#Tener en cuenta para cuando el usuario reinicie el juego
+def puntaje_por_encendidas(puntaje,grilla):
+    for linea in grilla:
+        for caracter in linea:
+            if(caracter == "0"):
+                if(puntaje > 0):
+                    puntaje = puntaje-50
+    return (puntaje)
+def usuario_jugando(tamaño):
+    print("¿Que desea hacer a continuacion?")
+    print("0 - Ingrasar coordenadas para jugar")
+    print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
+    print("2 - Salir del juego")
+    siguio = input("Opcion elegida: ")
+    if((siguio != "0") and (siguio != "1") and (siguio != "2")):
+        print("La opcion elegida no es valida, recuerde: ")
+        print("0 - Ingrasar coordenadas para jugar")
+        print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
+        print("2 - Salir del juego")
+        siguio = input("Opcion elegida: ")
+    if(siguio == "0"):
+        return (coordenadas_ingresadas(tamaño))
+    else:
+        return (siguio)
+def usuario_jugo(coordenadas):
+    if((coordenadas[1] == "A") or (coordenadas[1] == "a")):
+        coordenadas[1] = 0
