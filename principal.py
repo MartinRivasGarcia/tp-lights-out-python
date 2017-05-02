@@ -15,9 +15,9 @@ ganar = 0
 reiniciar = 0
 puntaje = 0
 
+grilla = niveles.generacion_grilla(nivel)
 if (juego == "1"):
     while(True):
-        grilla = niveles.generacion_grilla(nivel)
         while (ganar != 1):
             niveles.imprimir_grilla(nivel,grilla,tamaño)
             coordenadas = niveles.usuario_jugando(tamaño) #Falta definir que hago si elige reiniciar, tambien falta ver como juego
@@ -28,5 +28,6 @@ if (juego == "1"):
             elif(coordenadas == "1"): #Reinicio
                 puntaje = niveles.puntaje_por_encendidas(puntaje,grilla,tamaño)
                 print(puntaje)
-            #else: #Jugo
+            else: #Jugo
+                niveles.interactuar_con_el_tablero(grilla,coordenadas,tamaño)
         nivel = nivel + 1

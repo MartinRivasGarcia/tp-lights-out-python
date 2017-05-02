@@ -140,3 +140,53 @@ def usuario_jugando(tamaño):
         return (coordenadas_ingresadas(tamaño))
     else:
         return (siguio)
+
+def interactuar_con_el_tablero(grilla,coordenadas,tamaño):
+    filas,columnas = convertir_coordenadas(coordenadas)
+    if(grilla[filas][columnas] == '0'):
+        grilla[filas][columnas] = '.'
+    else:
+        grilla[filas][columnas] = '0'
+    if(columnas > 0):
+        if (grilla[filas][columnas-1] == '0'):
+            grilla[filas][columnas-1] = '.'
+        else:
+            grilla[filas][columnas-1] = '0'
+    if(columnas < (tamaño-1)):
+        if (grilla[filas][columnas+1] == '0'):
+            grilla[filas][columnas+1] = '.'
+        else:
+            grilla[filas][columnas+1] = '0'
+    if(int(filas) > 1):
+        if (grilla[str(int(filas)-1)][columnas] == '0'):
+            grilla[str(int(filas)-1)][columnas] = '.'
+        else:
+            grilla[str(int(filas)-1)][columnas] = '0'
+    if (int(filas) < tamaño):
+        if (grilla[str(int(filas)+1)][columnas] == '0'):
+            grilla[str(int(filas)+1)][columnas] = '.'
+        else:
+            grilla[str(int(filas)+1)][columnas] = '0'
+
+def convertir_coordenadas(coordenadas):
+    filas = coordenadas[0]
+    if((coordenadas[1] == "A") or (coordenadas[1] =="a")):
+        columnas = 0
+    if ((coordenadas[1] == "B") or (coordenadas[1] == "b")):
+        columnas = 1
+    if ((coordenadas[1] == "C") or (coordenadas[1] == "c")):
+        columnas = 2
+    if ((coordenadas[1] == "D") or (coordenadas[1] == "d")):
+        columnas = 3
+    if ((coordenadas[1] == "E") or (coordenadas[1] == "e")):
+        columnas = 4
+    if ((coordenadas[1] == "F") or (coordenadas[1] == "f")):
+        columnas = 5
+    if ((coordenadas[1] == "G") or (coordenadas[1] == "g")):
+        columnas = 6
+    if ((coordenadas[1] == "H") or (coordenadas[1] == "i")):
+        columnas = 7
+    if ((coordenadas[1] == "J") or (coordenadas[1] == "j")):
+        columnas = 8
+
+    return (filas,columnas)
