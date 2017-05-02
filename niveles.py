@@ -190,3 +190,26 @@ def convertir_coordenadas(coordenadas):
         columnas = 8
 
     return (filas,columnas)
+
+def verificar_juego(grilla,tamaño):
+    ganar = 1
+    for numero in range(1,(tamaño+1)):
+        posicionV = str(numero)
+        for caracter in grilla[posicionV]:
+            if(caracter == "0"):
+                ganar = 0
+    return (ganar)
+
+def control(movimientos,ganar,puntaje,limite):
+    movimientos = movimientos + 1
+    print("Recuerde que tiene un maximo de %s movimientos, su cantidad actual de movimientos es %s" % (
+    limite, movimientos))
+
+    if(movimientos == limite):
+        print("Ha superado la cantidad de movimientos maximos, el nivel sera reiniciado")
+        movimientos = 0
+        ganar = 2
+        puntaje = puntaje - 300
+        print("Su puntaje actual ahora es " + str(puntaje))
+        print()
+    return (movimientos,ganar,puntaje)
