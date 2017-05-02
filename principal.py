@@ -32,6 +32,7 @@ if (juego == "1"):
                 puntaje = niveles.puntaje_por_encendidas(puntaje,grilla,tamaño)
                 print("Usted a reiniciado el nivel " + str(nivel))
                 print("Su puntaje actual es " + str(puntaje))
+                print()
                 grilla = niveles.generacion_grilla(nivel)
             else: #Jugo
                 niveles.interactuar_con_el_tablero(grilla,coordenadas,tamaño)
