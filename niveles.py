@@ -47,7 +47,12 @@ def generacion_grilla(nivel):
 #Imprime en pantalla la grilla del nivel inicial, la cual ira siendo modificada
 def imprimir_grilla (nivel,grilla,tamaño):
     print("Usted esta jugando el nivel " + str(nivel) + ":")
-    print("    A B C D E ")
+    final = limite(tamaño)
+    print("    ",end='')
+    for a in range(1,tamaño+1):
+        letra = limite(a)
+        print(letra[1],end=' ')
+    print()
     for numero in range(1,(tamaño+1)):
         posicionG = str(numero)
         print(str(numero) + " | ",end="")
@@ -92,6 +97,14 @@ def coordenadas_ingresadas (tamaño):
     return (a)
 
 def limite(tamaño):
+    if (tamaño == 1):
+        return ("a", "A")
+    if (tamaño == 2):
+        return ("b", "B")
+    if (tamaño == 3):
+        return ("c", "C")
+    if (tamaño == 4):
+        return ("d", "D")
     if(tamaño == 5):
         return("e","E")
     if(tamaño == 6):
@@ -105,15 +118,6 @@ def limite(tamaño):
     if(tamaño == 10):
         return("j","J")
 
-#Tener en cuenta para el modo de juego alternativo
-def generar_random():
-    import random
-    caracter = random.random() #Devuelve entre 0.0 y 1.0
-    if (caracter > 0.5):
-        caracter = 0
-    else:
-        caracter = "."
-    return(caracter)
 
 #Tener en cuenta para cuando el usuario reinicie el juego
 def puntaje_por_encendidas(puntaje,grilla,tamaño):
@@ -167,6 +171,7 @@ def interactuar_con_el_tablero(grilla,coordenadas,tamaño):
             grilla[str(int(filas)+1)][columnas] = '.'
         else:
             grilla[str(int(filas)+1)][columnas] = '0'
+    return(grilla)
 
 def convertir_coordenadas(coordenadas):
     filas = coordenadas[0]
