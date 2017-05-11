@@ -46,7 +46,7 @@ def generacion_grilla(nivel):
 
 #Imprime en pantalla la grilla del nivel inicial, la cual ira siendo modificada
 def imprimir_grilla (nivel,grilla,tamaño):
-    print("Usted esta jugando el nivel " + str(nivel) + ":")
+    print("Nivel " + str(nivel) + ":")
     final = limite(tamaño)
     print("    ",end='')
     for a in range(1,tamaño+1):
@@ -93,6 +93,7 @@ def coordenadas_ingresadas (tamaño):
     error = 0
     if(len(a) != 2):
         error = 1
+        print("Recuerde ingresar solo dos valores")
     if((a[1] < "A") and (error != 1)):
         if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
             print("El numero de las filas ingresado es invalido")
@@ -111,6 +112,7 @@ def coordenadas_ingresadas (tamaño):
         error = 0
         if (len(a) != 2):
             error = 1
+            print("Recuerde ingresar solo dos valores")
         if ((a[1] < "A") and (error != 1)):
             if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
                 print("El numero de las filas ingresado es invalido")
@@ -137,15 +139,14 @@ def puntaje_por_encendidas(puntaje,grilla,tamaño):
 
 def usuario_jugando(tamaño):
     print("¿Que desea hacer a continuacion?")
-    print("0 - Ingresar coordenadas para jugar")
-    print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
-    print("2 - Salir del juego")
+    print("Ingresar coordenadas para jugar")
+    print("R - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
     siguio = input("Opcion elegida: ")
-    while((siguio != "0") and (siguio != "1") and (siguio != "2")):
+
+    while(len(siguio) > 2 or ((len(siguio) == 1) and (siguio != "R" and siguio != "r"))):
         print("La opcion elegida no es valida, recuerde: ")
-        print("0 - Ingresar coordenadas para jugar")
-        print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
-        print("2 - Salir del juego")
+        print("Ingresar coordenadas para jugar")
+        print("R - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
         siguio = input("Opcion elegida: ")
     if(siguio == "0"):
         return (coordenadas_ingresadas(tamaño))
@@ -214,7 +215,7 @@ def verificar_juego(grilla,tamaño):
 
 def control(movimientos,ganar,puntaje,limite):
     movimientos = movimientos + 1
-    print("Recuerde que tiene un maximo de", str(limite), "movimientos, su cantidad actual de movimientos es ",str(movimientos))
+    print("Movimientos: ", str(movimientos), "de" , str(limite))
 
     if(movimientos == limite):
         print("Ha superado la cantidad de movimientos maximos, el juego sera reiniciado")

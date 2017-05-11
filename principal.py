@@ -21,7 +21,7 @@ while(True):
         reiniciar = 0
         puntaje = [0, 0, 0, 0, 0]
         movimientos = 0
-        limite = 7
+        limite = tamaño * 3
 
         if (juego == "1"):
             grilla = niveles.generacion_grilla(nivel)
@@ -33,14 +33,16 @@ while(True):
     while ((ganar != 1) and (ganar != 2)):
         niveles.imprimir_grilla(nivel,grilla,tamaño)
         coordenadas = niveles.usuario_jugando(tamaño) #Falta definir que hago si elige reiniciar, tambien falta ver como juego
+        '''
         if(coordenadas == "2"): #Elijio salir
-            print("Su puntaje final fue " + str(puntaje))
+            print("Su puntaje final fue " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
             print("Gracias por jugar a lights out")
             print("Vuelva pronto")
             exit()
-        elif(coordenadas == "1"): #Reinicio
+        '''
+        if(coordenadas == "R" or coordenadas == "r"): #Reinicio
             puntaje[nivel-1] = niveles.puntaje_por_encendidas(puntaje[nivel-1],grilla,tamaño)
-            print("Usted a reiniciado el nivel " + str(nivel))
+            print("Usted ha reiniciado el nivel " + str(nivel))
             print("Su puntaje actual es " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
             print()
             if(juego == "1"):
@@ -54,19 +56,20 @@ while(True):
             if(ganar == 2):
                 menu.imprimir_puntaje(puntaje)
                 entro = 0
-    puntaje[nivel - 1] = puntaje[nivel - 1] + 500
-    if((nivel < 5) and (ganar == 1)):
-        print("Felicidades a logrado completar el nivel " + str(nivel))
-        print("Su puntaje acutal es de " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
-        print()
-        nivel = nivel + 1
-        if(juego == "1"):
-            grilla = niveles.generacion_grilla(nivel)
+    if(ganar == 1):
+        puntaje[nivel - 1] = puntaje[nivel - 1] + 500
+        if(nivel < 5):
+            print("Felicidades ha logrado completar el nivel " + str(nivel))
+            print("Su puntaje actual es de " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
+            print()
+            nivel = nivel + 1
+            if(juego == "1"):
+                grilla = niveles.generacion_grilla(nivel)
+            else:
+                grilla = aleatorio.generar_grilla(tamaño)
+            ganar = 0
+            movimientos = 0
         else:
-            grilla = aleatorio.generar_grilla(tamaño)
-        ganar = 0
-        movimientos = 0
-    elif(ganar == 1):
-        print("Felicidades a logrado completar todos los niveles")
-        menu.imprimir_puntaje(puntaje)
-        entro = 0
+            print("Felicidades ha logrado completar todos los niveles")
+            menu.imprimir_puntaje(puntaje)
+            entro = 0
