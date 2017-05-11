@@ -21,7 +21,7 @@ while(True):
         reiniciar = 0
         puntaje = [0, 0, 0, 0, 0]
         movimientos = 0
-        limite = tamaño * 3
+        limite = 7
 
         if (juego == "1"):
             grilla = niveles.generacion_grilla(nivel)
@@ -30,7 +30,7 @@ while(True):
 
         entro = 1
 
-    while (ganar != 1):
+    while ((ganar != 1) and (ganar != 2)):
         niveles.imprimir_grilla(nivel,grilla,tamaño)
         coordenadas = niveles.usuario_jugando(tamaño) #Falta definir que hago si elige reiniciar, tambien falta ver como juego
         if(coordenadas == "2"): #Elijio salir
@@ -50,15 +50,12 @@ while(True):
         else: #Jugo
             grilla = niveles.interactuar_con_el_tablero(grilla,coordenadas,tamaño)
             ganar = niveles.verificar_juego(grilla,tamaño)
-            movimientos,ganar,puntaje = niveles.control(movimientos,ganar,puntaje[nivel-1],limite)
+            movimientos,ganar,puntaje[nivel-1] = niveles.control(movimientos,ganar,puntaje[nivel-1],limite)
             if(ganar == 2):
-                ganar = 0
-                if(juego == "1"):
-                    grilla = niveles.generacion_grilla(nivel)
-                else:
-                    grilla = aleatorio.generar_grilla(tamaño)
+                menu.imprimir_puntaje(puntaje)
+                entro = 0
     puntaje[nivel - 1] = puntaje[nivel - 1] + 500
-    if(nivel < 5):
+    if((nivel < 5) and (ganar == 1)):
         print("Felicidades a logrado completar el nivel " + str(nivel))
         print("Su puntaje acutal es de " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
         print()
@@ -69,7 +66,7 @@ while(True):
             grilla = aleatorio.generar_grilla(tamaño)
         ganar = 0
         movimientos = 0
-    else:
+    elif(ganar == 1):
         print("Felicidades a logrado completar todos los niveles")
         menu.imprimir_puntaje(puntaje)
         entro = 0

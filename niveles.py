@@ -62,40 +62,6 @@ def imprimir_grilla (nivel,grilla,tamaño):
     print()
 
 #Devuelve las coordenadas que el usuario ingreso
-def coordenadas_ingresadas (tamaño):
-    a = input("Ingrese las coordenadas a utilizar: ")
-    final = limite(tamaño)
-    if(a[0] < "A"):
-        if ((int(a[0]) > tamaño) or (int(a[0]) <= 0)):
-            print("El numero de las filas ingresado es invalido")
-            error = 1
-        else:
-            error=0
-    else:
-        print("La primer coordenada debe ser un numero referido a las filas")
-        error = 1
-
-    if (((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])) or (a[1]==None)):
-        print("La letra referida a las columnas ingresada es invalida")
-        error = 1
-    while(error == 1):
-        a = input("Reingrese las coordenadas a utilizar: ")
-        if (a[0] < "A"):
-            if ((int(a[0]) > tamaño) or (int(a[0]) <= 0)):
-                print("El numero de las filas ingresado es invalido")
-                error = 1
-            else:
-                error = 0
-        else:
-            print("La primer coordenada debe ser un numero referido a las filas")
-            error = 1
-
-        if (((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])) or (a[1]==None)):
-            print("La letra referida a las columnas ingresada es invalida")
-            error = 1
-    print()
-    return (a)
-
 def limite(tamaño):
     if (tamaño == 1):
         return ("a", "A")
@@ -119,6 +85,47 @@ def limite(tamaño):
         return("j","J")
 
 
+
+
+def coordenadas_ingresadas (tamaño):
+    a = input("Ingrese las coordenadas a utilizar: ")
+    final = limite(tamaño)
+    error = 0
+    if(len(a) != 2):
+        error = 1
+    if((a[1] < "A") and (error != 1)):
+        if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
+            print("El numero de las filas ingresado es invalido")
+            error = 1
+        else:
+            error=0
+    else:
+        print("La segunda coordenada debe ser un numero referido a las filas")
+        error = 1
+    if(error != 1):
+        if ((a[0] < "a" or a[0] > final[0]) and (a[0] < "A" or a[0] > final[1])):
+            print("La letra referida a las columnas ingresada es invalida")
+            error = 1
+    while(error == 1):
+        a = input("Reingrese las coordenadas a utilizar: ")
+        error = 0
+        if (len(a) != 2):
+            error = 1
+        if ((a[1] < "A") and (error != 1)):
+            if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
+                print("El numero de las filas ingresado es invalido")
+                error = 1
+            else:
+                error = 0
+        else:
+            print("La segunda coordenada debe ser un numero referido a las filas")
+            error = 1
+        if(error != 1):
+            if ((a[0] < "a" or a[0] > final[0]) and (a[0] < "A" or a[0] > final[1])):
+                print("La letra referida a las columnas ingresada es invalida")
+                error = 1
+    print()
+    return (a)
 #Tener en cuenta para cuando el usuario reinicie el juego
 def puntaje_por_encendidas(puntaje,grilla,tamaño):
     for numero in range(1,(tamaño+1)):
@@ -174,24 +181,24 @@ def interactuar_con_el_tablero(grilla,coordenadas,tamaño):
     return(grilla)
 
 def convertir_coordenadas(coordenadas):
-    filas = coordenadas[0]
-    if((coordenadas[1] == "A") or (coordenadas[1] =="a")):
+    filas = coordenadas[1]
+    if((coordenadas[0] == "A") or (coordenadas[0] =="a")):
         columnas = 0
-    if ((coordenadas[1] == "B") or (coordenadas[1] == "b")):
+    if ((coordenadas[0] == "B") or (coordenadas[0] == "b")):
         columnas = 1
-    if ((coordenadas[1] == "C") or (coordenadas[1] == "c")):
+    if ((coordenadas[0] == "C") or (coordenadas[0] == "c")):
         columnas = 2
-    if ((coordenadas[1] == "D") or (coordenadas[1] == "d")):
+    if ((coordenadas[0] == "D") or (coordenadas[0] == "d")):
         columnas = 3
-    if ((coordenadas[1] == "E") or (coordenadas[1] == "e")):
+    if ((coordenadas[0] == "E") or (coordenadas[0] == "e")):
         columnas = 4
-    if ((coordenadas[1] == "F") or (coordenadas[1] == "f")):
+    if ((coordenadas[0] == "F") or (coordenadas[0] == "f")):
         columnas = 5
-    if ((coordenadas[1] == "G") or (coordenadas[1] == "g")):
+    if ((coordenadas[0] == "G") or (coordenadas[0] == "g")):
         columnas = 6
-    if ((coordenadas[1] == "H") or (coordenadas[1] == "i")):
+    if ((coordenadas[0] == "H") or (coordenadas[0] == "i")):
         columnas = 7
-    if ((coordenadas[1] == "J") or (coordenadas[1] == "j")):
+    if ((coordenadas[0] == "J") or (coordenadas[0] == "j")):
         columnas = 8
 
     return (filas,columnas)
@@ -207,14 +214,12 @@ def verificar_juego(grilla,tamaño):
 
 def control(movimientos,ganar,puntaje,limite):
     movimientos = movimientos + 1
-    print("Recuerde que tiene un maximo de %s movimientos, su cantidad actual de movimientos es %s" % (
-    limite, movimientos))
+    print("Recuerde que tiene un maximo de", str(limite), "movimientos, su cantidad actual de movimientos es ",str(movimientos))
 
     if(movimientos == limite):
-        print("Ha superado la cantidad de movimientos maximos, el nivel sera reiniciado")
+        print("Ha superado la cantidad de movimientos maximos, el juego sera reiniciado")
         movimientos = 0
         ganar = 2
         puntaje = puntaje - 300
-        print("Su puntaje del nivel ahora es " + str(puntaje))
         print()
     return (movimientos,ganar,puntaje)
