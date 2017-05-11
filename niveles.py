@@ -75,7 +75,7 @@ def coordenadas_ingresadas (tamaño):
         print("La primer coordenada debe ser un numero referido a las filas")
         error = 1
 
-    if ((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])):
+    if (((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])) or (a[1]==None)):
         print("La letra referida a las columnas ingresada es invalida")
         error = 1
     while(error == 1):
@@ -90,7 +90,7 @@ def coordenadas_ingresadas (tamaño):
             print("La primer coordenada debe ser un numero referido a las filas")
             error = 1
 
-        if ((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])):
+        if (((a[1] < "a" or a[1] > final[0]) and (a[1] < "A" or a[1] > final[1])) or (a[1]==None)):
             print("La letra referida a las columnas ingresada es invalida")
             error = 1
     print()
@@ -124,7 +124,7 @@ def puntaje_por_encendidas(puntaje,grilla,tamaño):
     for numero in range(1,(tamaño+1)):
         posicion=str(numero)
         for caracter in grilla[posicion]:
-            if((caracter == "0") and (puntaje > 0)):
+            if(caracter == "0"):
                 puntaje = puntaje-50
     return (puntaje)
 
@@ -134,7 +134,7 @@ def usuario_jugando(tamaño):
     print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
     print("2 - Salir del juego")
     siguio = input("Opcion elegida: ")
-    if((siguio != "0") and (siguio != "1") and (siguio != "2")):
+    while((siguio != "0") and (siguio != "1") and (siguio != "2")):
         print("La opcion elegida no es valida, recuerde: ")
         print("0 - Ingresar coordenadas para jugar")
         print("1 - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
@@ -215,6 +215,6 @@ def control(movimientos,ganar,puntaje,limite):
         movimientos = 0
         ganar = 2
         puntaje = puntaje - 300
-        print("Su puntaje actual ahora es " + str(puntaje))
+        print("Su puntaje del nivel ahora es " + str(puntaje))
         print()
     return (movimientos,ganar,puntaje)

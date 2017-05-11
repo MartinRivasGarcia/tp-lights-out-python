@@ -87,3 +87,13 @@ def modo_aleatorio():
     tamaño = int(tamaño) + 4
     print("El tablero elegido es de " + str(tamaño) + "X" + str(tamaño))
     return (tamaño)
+
+def imprimir_puntaje(puntaje):
+    print("Su puntaje total es: ",str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
+    print("El nivel 1: ",str(puntaje[0]))
+    print("El nivel 2: ", str(puntaje[1]))
+    print("El nivel 3: ", str(puntaje[2]))
+    print("El nivel 4: ", str(puntaje[3]))
+    print("El nivel 5: ", str(puntaje[4]))
+    print()
+    print("Seleccione que desea hacer a continuación")
