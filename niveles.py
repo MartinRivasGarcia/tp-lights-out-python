@@ -1,5 +1,5 @@
 #Genera las grillas de los niveles predeterminados
-def generacion_grilla(nivel):
+def generacion_grilla(nivel): #no hay generacion de nada, tengo q validar lo datos de entrada!!
     #La funcion unicamente te crea la grilla si la variable de entrada esta entre 1 y 5
     if (nivel == 1):
         lista = {
@@ -45,7 +45,7 @@ def generacion_grilla(nivel):
     return (lista)
 
 #Imprime en pantalla la grilla del nivel inicial, la cual ira siendo modificada
-def imprimir_grilla (nivel,grilla,tamaño):
+def imprimir_grilla (nivel,grilla,tamaño): #Grilla no, es un tablero
     print("Nivel " + str(nivel) + ":")
     final = limite(tamaño)
     print("    ",end='')
@@ -62,7 +62,7 @@ def imprimir_grilla (nivel,grilla,tamaño):
     print()
 
 #Devuelve las coordenadas que el usuario ingreso
-def limite(tamaño):
+def limite(tamaño): #Reemplazar por una estructura de datos
     if (tamaño == 1):
         return ("a", "A")
     if (tamaño == 2):
@@ -87,11 +87,11 @@ def limite(tamaño):
 
 
 
-def coordenadas_ingresadas (tamaño):
-    a = input("Ingrese las coordenadas a utilizar: ")
+def coordenadas_ingresadas (tamaño): #Deberia dividirlo ed forma tal q una fucion me avise si lo ingresado no es valido
+    a = input("Ingrese las coordenadas a utilizar: ") #a = coordenadaDelUsuario
     final = limite(tamaño)
     error = 0
-    if(len(a) != 2):
+    if(len(a) != 2): #2 numero magico, funcion lonngitudInvalidaCoordenada (coordenadaDelUsuario)
         error = 1
         print("Recuerde ingresar solo dos valores")
     if((a[1] < "A") and (error != 1)):
@@ -99,7 +99,7 @@ def coordenadas_ingresadas (tamaño):
             print("El numero de las filas ingresado es invalido")
             error = 1
         else:
-            error=0
+            error = 0
     else:
         print("La segunda coordenada debe ser un numero referido a las filas")
         error = 1
@@ -183,7 +183,7 @@ def interactuar_con_el_tablero(grilla,coordenadas,tamaño):
 
 def convertir_coordenadas(coordenadas):
     filas = coordenadas[1]
-    if((coordenadas[0] == "A") or (coordenadas[0] =="a")):
+    if((coordenadas[0] == "A") or (coordenadas[0] =="a")): #Se puede simplificar en un diccionario
         columnas = 0
     if ((coordenadas[0] == "B") or (coordenadas[0] == "b")):
         columnas = 1
@@ -204,7 +204,7 @@ def convertir_coordenadas(coordenadas):
 
     return (filas,columnas)
 
-def verificar_juego(grilla,tamaño):
+def verificar_juego(grilla,tamaño): #juego ganado
     ganar = 1
     for numero in range(1,(tamaño+1)):
         posicionV = str(numero)
@@ -224,3 +224,7 @@ def control(movimientos,ganar,puntaje,limite):
         puntaje = puntaje - 300
         print()
     return (movimientos,ganar,puntaje)
+
+def inicializarNiveles():
+    nivel = 1
+    reiniciar = False
