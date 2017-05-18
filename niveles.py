@@ -204,6 +204,19 @@ def convertir_coordenadas(coordenadas):
 
     return (filas,columnas)
 
+def devolverTablero(nivel): #no hay generacion de nada, tengo q validar lo datos de entrada!!
+    #La funcion unicamente te crea la grilla si la variable de entrada esta entre 1 y 5
+    lista = [[['0','0','.','0','0'],['0','.','0','.','0'],['.','0','0','0','.'],['0','.','0','.','0'],['0','0','.','0','0']],
+             [['.','0','.','0','.'],['0','0','.','0','0'],['.','0','.','0','.'],['0','.','0','.','0'],['0','.','0','.','0']],
+             [['0','.','.','.','0'],['0','0','.','0','0'],['.','.','0','.','.'],['0','.','0','.','.'],['0','.','0','0','.']],
+             [['0','0','.','0','0'],['.','.','.','.','.'],['0','0','.','0','0'],['.','.','.','.','0'],['0','0','.','.','.']],
+             [['.','.','.','0','0'],['.','.','.','0','0'],['.','.','.','.','.'],['0','0','.','.','.'],['0','0','.','.','.']]]
+
+    return (lista[nivel-1])
+
+
+
+
 def verificar_juego(grilla,tamaño): #juego ganado
     ganar = 1
     for numero in range(1,(tamaño+1)):
@@ -226,5 +239,7 @@ def control(movimientos,ganar,puntaje,limite):
     return (movimientos,ganar,puntaje)
 
 def inicializarNiveles():
+    global nivel
+    global reiniciar
     nivel = 1
     reiniciar = False

@@ -1,32 +1,47 @@
 import niveles
 import usuario
-#import tablero
+import tablero
 
 def inicializarJuego ():
-    niveles.movimientos = 0
-
+    global movimientos
+    global limite
+    global ganar
+    global reiniciar
+    movimientos = 0
+    limite = 15
     ganar = False
+    reiniciar = False
+
+
     niveles.inicializarNiveles()
-    usuario.inicializarUsuario()
-    #tablero.inicializarTablero()
-    desarrolloJuego ()
+    usuario.incializarUsuario()
+    tablero.inicializarTablero()
+    #desarrolloJuego ()
 
     #esto deberia ser despues de generar tamaño, y quizas sirve meterlo en una funcion
-    niveles.limite = tablero.tamaño * 3
+    #tablero.tamaño
 
-def desarrolloJuego ():
-    while(True): #Aca tengo que meter todo el despligue de logica de principal.py
+#def desarrolloJuego ():
+ #   while(True): #Aca tengo que meter todo el despligue de logica de principal.py
 
 
-def control(ganar,puntaje):
-    niveles.movimientos = niveles.movimientos + 1
-    print("Movimientos: ", str(niveles.movimientos), "de" , str(niveles.limite))
+def control(puntaje):
+    global movimientos
+    global reiniciar
+    movimientos = movimientos + 1
 
-    if(niveles.movimientos == niveles.limite):
+    print("Movimientos: ", str(movimientos), "de" , str(limite))
+
+    if(movimientos == limite):
         print("Ha superado la cantidad de movimientos maximos, el juego sera reiniciado")
         #Deberia reiniciar con una funcion
-        niveles.movimientos = 0
-        ganar = 2 #Voy a cambiar totalmente el concepto de la variable ganar
-        puntaje = puntaje - 300 #deberia avisarle a usuario.py q modifique el valor de puntaje
+        movimientos = 0
+        reiniciar = True
+        usuario.modificarPuntaje(-300)
         print()
-    return (ganar,puntaje)
+
+    return (puntaje)
+
+def reiniciarMovimientos():
+    global movimientos
+    movimientos = 0
