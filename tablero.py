@@ -1,9 +1,12 @@
-def inicializarTablero():
-    import niveles
+import niveles
+import menu
+
+def inicializarTablero(recibo):
 
     global tablero
     global tamaño
-    tablero = niveles.generacion_grilla(1)
+    tablero = niveles.devolverTablero(1)
+    tamaño = recibo
 
 def verificarJuegoGanado(grilla,tamaño):
 
@@ -15,16 +18,12 @@ def verificarJuegoGanado(grilla,tamaño):
     return (True)
 
 def bajarNuevoTabblero(nivel):
-    import niveles
 
     global tablero
-
     tablero = niveles.devolverTablero(nivel)
 
 
-def imprimirTablero (nivel,tamaño): #Grilla no, es un tablero
-    import niveles
-
+def imprimirTablero (nivel): #Grilla no, es un tablero
     print("Nivel " + str(nivel) + ":")
     final = niveles.limite(tamaño)
     print("    ",end='')
@@ -33,12 +32,47 @@ def imprimirTablero (nivel,tamaño): #Grilla no, es un tablero
         print(letra[1],end=' ')
     print()
     for numero in range(0,(tamaño)):
-        print(str(numero) + " | ",end="")
+        print(str(numero+1) + " | ",end="")
         for elemento in tablero[numero]:
             print(elemento, end=" ")
         print()
     print()
 
-inicializarTablero()
-bajarNuevoTabblero(1)
-imprimirTablero(3,5)
+def modificarGrilla():
+    coordenadas = niveles.usuario_jugando(tamaño)
+    interactuar_con_el_tablero(coordenadas)
+
+def interactuar_con_el_tablero(coordenadas):
+    global tablero
+    filas,columnas = niveles.convertir_coordenadas(coordenadas) #10
+    if(tablero[filas][columnas] == '0'):
+        tablero[filas][columnas] = '.'
+    else:
+        tablero[filas][columnas] = '0'
+    if(columnas > 0):
+        if (tablero[filas][columnas-1] == '0'):
+            tablero[filas][columnas-1] = '.'
+        else:
+            tablero[filas][columnas-1] = '0'
+    if(columnas < (tamaño-1)):
+        if (tablero[filas][columnas+1] == '0'):
+            tablero[filas][columnas+1] = '.'
+        else:
+            tablero[filas][columnas+1] = '0'
+    if(filas > 0):
+        if (tablero[(filas)-1][columnas] == '0'):
+            tablero[(filas)-1][columnas] = '.'
+        else:
+            tablero[(filas)-1][columnas] = '0'
+    if (filas < (tamaño-1)):
+        if (tablero[filas+1][columnas] == '0'):
+            tablero[filas+1][columnas] = '.'
+        else:
+            tablero[filas+1][columnas] = '0'
+
+def verificarTableroVacio():
+    for numero in range(0, tamaño):
+        for caracter in tablero[numero]:
+            if (caracter == "0"):
+                return False
+    return True

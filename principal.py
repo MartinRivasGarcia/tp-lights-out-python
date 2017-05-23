@@ -1,10 +1,10 @@
 import menu
 import niveles
 import aleatorio
+import usuario
 
 menu.bienvenida()
 entro = 0
-
 
 while(True):
     #quizas todo esto conviene meterlo en un modulo por ejemplo juego.py
@@ -49,7 +49,7 @@ while(True):
         else: #Jugo
             grilla = niveles.interactuar_con_el_tablero(grilla,coordenadas,tamaño)
             ganar = niveles.verificar_juego(grilla,tamaño)
-            movimientos,ganar,puntaje[nivel-1] = niveles.control(movimientos,ganar,puntaje[nivel-1],limite) #Esta funcion resive muchos parametros
+            movimientos,ganar,puntaje[nivel-1] = niveles.control(movimientos,ganar,puntaje[nivel-1],limite) #Esta funcion recive muchos parametros
             if(ganar == 2):
                 menu.imprimir_puntaje(puntaje) #puntaje podria pertenecer solo a un modulo usuario.py
                 entro = 0

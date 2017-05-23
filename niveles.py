@@ -87,8 +87,8 @@ def limite(tamaño): #Reemplazar por una estructura de datos
 
 
 
-def coordenadas_ingresadas (tamaño): #Deberia dividirlo ed forma tal q una fucion me avise si lo ingresado no es valido
-    a = input("Ingrese las coordenadas a utilizar: ") #a = coordenadaDelUsuario
+def coordenadas_ingresadas (siguio,tamaño): #Deberia dividirlo ed forma tal q una fucion me avise si lo ingresado no es valido
+    a = siguio
     final = limite(tamaño)
     error = 0
     if(len(a) != 2): #2 numero magico, funcion lonngitudInvalidaCoordenada (coordenadaDelUsuario)
@@ -148,8 +148,8 @@ def usuario_jugando(tamaño):
         print("Ingresar coordenadas para jugar")
         print("R - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
         siguio = input("Opcion elegida: ")
-    if(siguio == "0"):
-        return (coordenadas_ingresadas(tamaño))
+    if(siguio != "0"):
+        return (coordenadas_ingresadas(siguio,tamaño))
     else:
         return (siguio)
 
@@ -182,7 +182,7 @@ def interactuar_con_el_tablero(grilla,coordenadas,tamaño):
     return(grilla)
 
 def convertir_coordenadas(coordenadas):
-    filas = coordenadas[1]
+    filas = int(coordenadas[1])-1
     if((coordenadas[0] == "A") or (coordenadas[0] =="a")): #Se puede simplificar en un diccionario
         columnas = 0
     if ((coordenadas[0] == "B") or (coordenadas[0] == "b")):
