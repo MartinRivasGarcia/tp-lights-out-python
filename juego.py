@@ -64,7 +64,7 @@ def juegoElegido():
     tablero.inicializarTablero(tamaño)
 
 def verificarSiEligioSalir():
-    if(juego == 3):
+    if(juego == "3"):
         print("Gracias por jugar a lights out")
         print("Vuelva pronto")
         exit()
