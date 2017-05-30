@@ -148,7 +148,7 @@ def usuario_jugando(tamaño):
         print("Ingresar coordenadas para jugar")
         print("R - Reiniciar el nivel y restar 50  puntos por cada luz encendida")
         siguio = input("Opcion elegida: ")
-    if(siguio != "0"):
+    if(siguio != "R" and siguio != "r"):
         return (coordenadas_ingresadas(siguio,tamaño))
     else:
         return (siguio)

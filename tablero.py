@@ -39,8 +39,14 @@ def imprimirTablero (nivel): #Grilla no, es un tablero
     print()
 
 def modificarGrilla():
+    import usuario
     coordenadas = niveles.usuario_jugando(tamaño)
-    interactuar_con_el_tablero(coordenadas)
+    if(coordenadas != "r" and coordenadas != "R"):
+        interactuar_con_el_tablero(coordenadas)
+        return False
+    else:
+        usuario.puntaje_por_encendidas(tablero,tamaño)
+        return True
 
 def interactuar_con_el_tablero(coordenadas):
     global tablero

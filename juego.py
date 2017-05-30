@@ -27,9 +27,13 @@ def desarrolloJuego():
     juegoElegido()
     while (True):  # Aca tengo que meter todo el despligue de logica de principal.py
         usuario.imprimirGrilla()
-        tablero.modificarGrilla()
+        if(tablero.modificarGrilla()):  #Cambiar el nombre de la funcion
+            reiniciarMovimientos()
         if(tablero.verificarTableroVacio()):
-            usuario.nivelSuperado()
+            reiniciarMovimientos()
+            if(usuario.juegoSuperado()):
+                menu.bienvenida()
+                juegoElegido()
         else:
             control()
 
