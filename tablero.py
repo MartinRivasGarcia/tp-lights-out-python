@@ -1,5 +1,4 @@
 import niveles
-import menu
 
 def inicializarTablero(recibo):
 
@@ -23,9 +22,8 @@ def bajarNuevoTabblero(nivel):
     tablero = niveles.devolverTablero(nivel)
 
 
-def imprimirTablero (nivel): #Grilla no, es un tablero
+def imprimirTablero (nivel):
     print("Nivel " + str(nivel) + ":")
-    final = niveles.limite(tamaño)
     print("    ",end='')
     for a in range(1,tamaño+1):
         letra = niveles.limite(a)
@@ -38,19 +36,20 @@ def imprimirTablero (nivel): #Grilla no, es un tablero
         print()
     print()
 
-def modificarGrilla():
+def verificarSiEligioReiniciar():
     import usuario
     coordenadas = niveles.usuario_jugando(tamaño)
+
     if(coordenadas != "r" and coordenadas != "R"):
         interactuar_con_el_tablero(coordenadas)
         return False
     else:
-        usuario.puntaje_por_encendidas(tablero,tamaño)
+        usuario.puntaje_por_encendidas(tablero, tamaño)
         return True
 
 def interactuar_con_el_tablero(coordenadas):
     global tablero
-    filas,columnas = niveles.convertir_coordenadas(coordenadas) #10
+    filas,columnas = niveles.convertir_coordenadas(coordenadas,tamaño)
     if(tablero[filas][columnas] == '0'):
         tablero[filas][columnas] = '.'
     else:

@@ -18,19 +18,18 @@ def inicializarJuego():
 
     desarrolloJuego()
 
-    # esto deberia ser despues de generar tamaño, y quizas sirve meterlo en una funcion
-    # tablero.tamaño
-
 
 def desarrolloJuego():
     menu.bienvenida()
     juegoElegido()
     while (True):  # Aca tengo que meter todo el despligue de logica de principal.py
         usuario.imprimirGrilla()
-        if(tablero.modificarGrilla()):  #Cambiar el nombre de la funcion
+        if(tablero.verificarSiEligioReiniciar()):  #Cambiar el nombre de la funcion
             reiniciarMovimientos()
+
         if(tablero.verificarTableroVacio()):
             reiniciarMovimientos()
+
             if(usuario.juegoSuperado()):
                 menu.bienvenida()
                 juegoElegido()
@@ -76,4 +75,3 @@ def verificarSiEligioSalir():
 def reiniciarMovimientos():
     global movimientos
     movimientos = 0
-inicializarJuego()

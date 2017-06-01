@@ -11,18 +11,20 @@ def puntaje_por_encendidas(grilla,tamaño):
     global puntaje
     global nivel
 
-    for numero in range(1,tamaño):
-        posicion = numero
-        for caracter in grilla[posicion]:
+    for numero in range(0,tamaño):
+        for caracter in grilla[numero]:
             if(caracter == "0"):
                 puntaje[nivel-1] = puntaje[nivel-1]-50
 
     tablero.bajarNuevoTabblero(nivel)
 
+    print()
+    print("Usted a reiniciado el nivel, su puntaje actual en el mismo es: ",str(puntaje[nivel-1]))
+
 def modificarPuntaje (incremento):
     global puntaje
     global nivel
-    puntaje[nivel] = puntaje[nivel] + incremento
+    puntaje[nivel-1] = puntaje[nivel-1] + incremento
     if(incremento < 0):
         tablero.bajarNuevoTabblero(nivel)
 
@@ -48,7 +50,6 @@ def imprimirGrilla():
     tablero.imprimirTablero(nivel)
 
 def juegoSuperado():
-    #import juego
     global puntaje
     global nivel
     puntaje[nivel - 1] = puntaje[nivel - 1] + 500
@@ -58,7 +59,6 @@ def juegoSuperado():
         print()
         nivel = nivel + 1
         tablero.bajarNuevoTabblero(nivel)
-     #   juego.reiniciarMovimientos()
         return False
     else:
         print("Felicidades ha logrado completar todos los niveles")
