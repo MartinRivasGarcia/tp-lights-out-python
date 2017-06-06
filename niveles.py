@@ -19,7 +19,7 @@ def limite(tamaño): #Reemplazar por una estructura de datos
         return("i","I")
     if(tamaño == 10):
         return("j","J")
-    return ()
+    return (0,0)
 
 def validar_coordenadas_ingresadas (a,tamaño):
     final = limite(tamaño)
@@ -44,7 +44,8 @@ def validar_coordenadas_ingresadas (a,tamaño):
     else:
         print("La segunda coordenada debe ser un numero referido a las filas")
         return False
-
+    if(final[0] == 0):
+        return False
     if ((a[0] < "a" or a[0] > final[0]) and (a[0] < "A" or a[0] > final[1])):
         print("La letra referida a las columnas ingresada es invalida")
         return False
