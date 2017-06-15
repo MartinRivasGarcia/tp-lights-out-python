@@ -37,7 +37,7 @@ def validar_coordenadas_ingresadas (a,tamaño):
         print("Recuerde ingresar solo dos valores")
         return False
 
-    if(a[1] < "A"):
+    if(a[1] < "A" and a[1] > "/"):
         if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
             print("El numero de las filas ingresado es invalido")
             return False
@@ -69,7 +69,7 @@ def usuario_jugando(tamaño):
 
 def convertir_coordenadas(coordenadas,tamaño):
     if(not validar_coordenadas_ingresadas(coordenadas,tamaño)):
-        return False
+        return (False,False)
     filas = int(coordenadas[1])-1
     clave = coordenadas[0]
     columnas = {
@@ -86,6 +86,9 @@ def convertir_coordenadas(coordenadas,tamaño):
 
 def devolverTablero(nivel): #no hay generacion de nada, tengo q validar lo datos de entrada!!
     #La funcion unicamente te crea la grilla si la variable de entrada esta entre 1 y 5
+
+    if str(nivel) > '5' or str(nivel) < '1':
+        return False
     lista = [[['0','0','.','0','0'],['0','.','0','.','0'],['.','0','0','0','.'],['0','.','0','.','0'],['0','0','.','0','0']],
              [['.','0','.','0','.'],['0','0','.','0','0'],['.','0','.','0','.'],['0','.','0','.','0'],['0','.','0','.','0']],
              [['0','.','.','.','0'],['0','0','.','0','0'],['.','.','0','.','.'],['0','.','0','.','.'],['0','.','0','0','.']],

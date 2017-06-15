@@ -9,8 +9,8 @@ def inicializarTablero(recibo):
 
 def verificarJuegoGanado(grilla,tamaño):
 
-    for numero in range(1,(tamaño+1)):
-        posicionV = str(numero)
+    for numero in range(0,tamaño):
+        posicionV = numero
         for caracter in grilla[posicionV]:
             if(caracter == "0"):
                 return False
