@@ -2,17 +2,20 @@ import niveles
 import usuario
 import tablero
 import menu
+import rogger
 
 def inicializarJuego():
     global movimientos
     global limite
     global ganar
     global reiniciar
+
     movimientos = 0
     limite = 15
     ganar = False
     reiniciar = False
 
+    rogger.abrir()
     niveles.inicializarNiveles()
     usuario.incializarUsuario()
 
@@ -22,7 +25,7 @@ def inicializarJuego():
 def desarrolloJuego():
     menu.bienvenida()
     juegoElegido()
-    while (True):  # Aca tengo que meter todo el despligue de logica de principal.py
+    while (True):
         usuario.imprimirGrilla()
         if(tablero.verificarSiEligioReiniciar()):  #Cambiar el nombre de la funcion
             reiniciarMovimientos()
@@ -68,6 +71,7 @@ def juegoElegido():
 
 def verificarSiEligioSalir():
     if(juego == "3"):
+        rogger.cerrar()
         print("Gracias por jugar a lights out")
         print("Vuelva pronto")
         exit()

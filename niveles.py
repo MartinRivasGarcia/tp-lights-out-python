@@ -22,12 +22,16 @@ def limite(tamaño): #Reemplazar por una estructura de datos
     return (0,0)
 
 def validar_coordenadas_ingresadas (a,tamaño):
+    import rogger
+
     final = limite(tamaño)
     global coordenadas
     if(len(a) < 1):
+        rogger.guardar("El dato ingresado esta vacio")
         return False
 
     if ((len(a) == 1) and (a != "R" and a != "r")):
+        rogger.guardar("El dato ingresado no indica ninguna accion")
         return False
 
     if((len(a) == 1) and (a == "R" or a == "r")):
@@ -35,19 +39,23 @@ def validar_coordenadas_ingresadas (a,tamaño):
 
     if(len(a) > 2):
         print("Recuerde ingresar solo dos valores")
+        rogger.guardar("El dato ingresado es mayor a dos valores")
         return False
 
     if(a[1] < "A" and a[1] > "/"):
         if ((int(a[1]) > tamaño) or (int(a[1]) <= 0)):
             print("El numero de las filas ingresado es invalido")
+            rogger.guardar("El numero de las filas ingresado es invalido")
             return False
     else:
         print("La segunda coordenada debe ser un numero referido a las filas")
+        rogger.guardar("Se ingreso un caracter incorrecto referido a las filas")
         return False
     if(final[0] == 0):
         return False
     if ((a[0] < "a" or a[0] > final[0]) and (a[0] < "A" or a[0] > final[1])):
         print("La letra referida a las columnas ingresada es invalida")
+        rogger.guardar("La letra referida a las columnas ingresada es invalida")
         return False
     print()
     return True

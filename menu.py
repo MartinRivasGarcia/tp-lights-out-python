@@ -1,3 +1,5 @@
+import rogger
+
 def bienvenida(): #Imprime texto en pantalla solo si se llama
     print("Binvenido a: ")
     print("         Lights out!!!!")
@@ -19,7 +21,7 @@ def instrucciones(): #Imprime el texto en pantalla q sea requerido
     return juego
 
 def modos_de_juego(paso):
-    tamaño=0
+    tamaño = 0
     if(paso == 0):
         print("Eliga una de las siguientes opciones para iniciar: ")
         print("1 - Predeterminado")
@@ -29,6 +31,7 @@ def modos_de_juego(paso):
         juego = input("Opcion elegida: ")
 
         while ((juego != "0") and (juego != "1") and (juego != "2") and (juego != "3")):
+            rogger.guardar("Ingresa un modo de juego invalido")
             print("El valor ingresado no es valido, recuerde:")
             print("1 - Predeterminado")
             print("2 - Aleatorio")
@@ -44,6 +47,7 @@ def modos_de_juego(paso):
         print("3 - Salir")
         juego = input("Opcion elegida: ")
         while ((juego != "1") and (juego != "2") and (juego!="3")):
+            rogger.guardar("Ingresa un modo de juego invalido")
             print("El valor ingresado no es valido, recuerde:")
             print("1 - Predeterminado")
             print("2 - Aleatorio")

@@ -1,0 +1,8 @@
+[2017-06-27 19:51:20.853746] Iniciando registro de errores
+[2017-06-27 19:53:36.079481] Fin del registro de errores
+[2017-06-27 20:10:15.880666] Iniciando registro de errores 
+[2017-06-27 20:10:56.436986] Iniciando registro de errores 
+[2017-06-27 20:10:58.267090] Ingresa un modo de juego invalido 
+[2017-06-27 20:12:03.988849] El numero de las filas ingresado es invalido 
+[2017-06-27 20:12:11.669289] La letra referida a las columnas ingresada es invalida 
+[2017-06-27 20:12:56.507853] Fin del registro de errores 
