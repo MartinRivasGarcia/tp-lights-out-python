@@ -21,7 +21,3 @@ def compararPuntaje(puntaje):
     if(puntaje > int(puntajeViejo[0][0])):
         puntajes = str(puntaje), str(now)
         guardar_puntajes(puntajes)
-'''
-with open("niveles.txt", "r") as f:
-    for linea in f:
-        print(linea,end=" ")'''
