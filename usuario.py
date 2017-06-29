@@ -30,6 +30,7 @@ def modificarPuntaje (incremento):
 
 def usuarioGano():
     import juego
+    import log_puntajes
     global nivel
     global puntaje
 
@@ -39,7 +40,7 @@ def usuarioGano():
         print("Su puntaje actual es de " + str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
         print()
         nivel = nivel + 1
-
+        log_puntajes.compararPuntaje(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4])
         tablero.bajarNuevoTabblero(nivel)
         juego.reiniciarMovimientos()
     else:
