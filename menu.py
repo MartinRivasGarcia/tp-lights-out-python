@@ -93,7 +93,9 @@ def modo_aleatorio():
     return (tamaño)
 
 def imprimir_puntaje(puntaje):
-    print("Su puntaje total es: ",str(puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]))
+    import log_puntajes
+    total = puntaje[0]+puntaje[1]+puntaje[2]+puntaje[3]+puntaje[4]
+    print("Su puntaje total es: ",str(total))
     print("El nivel 1: ",str(puntaje[0]))
     print("El nivel 2: ", str(puntaje[1]))
     print("El nivel 3: ", str(puntaje[2]))
@@ -101,3 +103,5 @@ def imprimir_puntaje(puntaje):
     print("El nivel 5: ", str(puntaje[4]))
     print()
     print("Seleccione que desea hacer a continuación")
+
+    log_puntajes.compararPuntaje(total)
