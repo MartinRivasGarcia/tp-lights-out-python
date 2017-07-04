@@ -27,7 +27,7 @@ def desarrolloJuego():
     juegoElegido()
     while (True):
         usuario.imprimirGrilla()
-        if(tablero.verificarSiEligioReiniciar()):  #Cambiar el nombre de la funcion
+        if(tablero.verificarSiEligioReiniciaroInteractuarConElTablero()):  #Cambiar el nombre de la funcion
             reiniciarMovimientos()
 
         if(tablero.verificarTableroVacio()):

@@ -37,7 +37,7 @@ def imprimirTablero (nivel):
         print()
     print()
 
-def verificarSiEligioReiniciar():
+def verificarSiEligioReiniciaroInteractuarConElTablero():
     import usuario
     coordenadas = niveles.usuario_jugando(tamaño)
 

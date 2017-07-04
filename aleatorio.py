@@ -8,9 +8,9 @@ def generar_random():
     return(caracter)
 
 def generar_grilla(tamaño):
-    grilla = {}
-    for a in range(1,tamaño+1):
-        grilla[str(a)]=[]
-        for b in range(0,tamaño+1):
-            grilla[str(a)].append(generar_random())
+    grilla = []
+    for a in range(0,tamaño):
+        grilla.append([])
+        for b in range(0,tamaño):
+            grilla[a].append(generar_random())
     return grilla
