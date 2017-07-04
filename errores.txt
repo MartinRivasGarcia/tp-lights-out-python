@@ -12,3 +12,6 @@
 [2017-06-29 17:33:33.632406] El numero de las filas ingresado es invalido 
 [2017-06-29 17:33:39.459739] El numero de las filas ingresado es invalido 
 [2017-06-29 17:34:57.779219] Fin del registro de errores 
+[2017-07-04 17:48:05.577492] Iniciando registro de errores 
+[2017-07-04 17:48:15.109108] El dato ingresado es mayor a dos valores 
+[2017-07-04 17:49:33.031245] Fin del registro de errores 

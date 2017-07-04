@@ -1,10 +1,11 @@
 import niveles
+import lecturaniveles
 
 def inicializarTablero(recibo):
 
     global tablero
     global tamaño
-    tablero = niveles.devolverTablero(1)
+    tablero = lecturaniveles.devolverTableroNuevo(1)
     tamaño = recibo
 
 def verificarJuegoGanado(grilla,tamaño):
@@ -19,7 +20,7 @@ def verificarJuegoGanado(grilla,tamaño):
 def bajarNuevoTabblero(nivel):
 
     global tablero
-    tablero = niveles.devolverTablero(nivel)
+    tablero = lecturaniveles.devolverTableroNuevo(nivel)
 
 
 def imprimirTablero (nivel):

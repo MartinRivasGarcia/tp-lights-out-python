@@ -1,9 +1,8 @@
-nivel = 1
 def crearTablero(tamaño):
     tablero = []
-    for j in range (0,tamaño):
+    for j in range (0,int(tamaño)):
         tablero.append([])
-        for i in range (0,tamaño):
+        for i in range (0,int(tamaño)):
             tablero[j].append([])
 
     return(tablero)
@@ -19,40 +18,34 @@ def validarDatosRenglon(informacion):
     if (informacion[1] >= "0" and informacion[1] <= "9"):
         tamaño = int(informacion[1])
     else:
-        #rogger.guardar("El tamaño del nivel no es un numero posible")
+        rogger.guardar("El tamaño del nivel no es un numero posible")
         return False
 
     if (int(informacion[2]) > tamaño):
-        #rogger.guardar("El dato leido en la fila es mayor al tamaño posible")
+        rogger.guardar("El dato leido en la fila es mayor al tamaño posible")
         return False
 
-    if(int(informacion[3]) < tamaño):
-        #rogger.guardar("El dato leido en la columna es mayor al tamaño posible")
+    if(int(informacion[3]) > tamaño):
+        rogger.guardar("El dato leido en la columna es mayor al tamaño posible")
         return False
 
-    if(informacion[4] != "0" and informacion[3] != "."):
-        #rogger.guardar("El dato leido no es un caracter valido para el tablero")
+    if(informacion[4] != "0" and informacion[4] != "."):
+        rogger.guardar("El dato leido no es un caracter valido para el tablero")
         return False
 
     return True
 
 def modificoTablero(datos,tablero):
-    print(tablero)
-    print(datos[2])
-    print(datos[3])
-    print(datos[4])
-    print(tablero[datos[2]][datos[3]])
-    tablero[datos[2]][datos[3]] = datos[4]
+
+    tablero[int(datos[2]) - 1][int(datos[3]) - 1] = datos[4]
     return (tablero)
 
-with open("niveles.txt", "r") as f:
-    informacion = []
-    a = 0
-    nivel = 1
-    cantidadCaracteres = 0
-    for linea in f:
-        if(a > 0):
+def devolverTableroNuevo(nivel):
+    with open("niveles.txt", "r") as f:
 
+        cantidadCaracteres = 0
+        for linea in f:
+            informacion = []
             for caracter in linea:
                 if(caracter != " " and caracter != None):
                     informacion.append(str(caracter))
@@ -61,6 +54,17 @@ with open("niveles.txt", "r") as f:
             if(validarNivelDelRenglon(informacion[0],nivel)):
                 if(validarDatosRenglon(informacion)):
                     tablero = crearTablero(informacion[1])
-                    tablero = modificoTablero(informacion,tablero)
-        a += 1
-    print(tablero)
+
+    with open("niveles.txt", "r") as f:
+        for linea in f:
+            informacion = []
+            for caracter in linea:
+                if (caracter != " " and caracter != None):
+                    informacion.append(str(caracter))
+                    cantidadCaracteres += 1
+
+            if (validarNivelDelRenglon(informacion[0], nivel)):
+                if (validarDatosRenglon(informacion)):
+                    tablero = modificoTablero(informacion, tablero)
+
+    return tablero
